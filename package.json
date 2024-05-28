@@ -3,7 +3,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build && mkdir -p dist"
+        "build": "vite build"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.19",
