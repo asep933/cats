@@ -7,7 +7,7 @@
     'nameSecond',    
 ])
 
-<div class="flex items-center justify-center px-16 flex-col max-[820px]:px-4">
+<div class="flex items-center justify-center px-16 flex-col max-[820px]:px-4 container mx-auto">
     <div class="flex items-center py-16 max-[820px]:flex-col-reverse">
         <div class="space-y-3 w-1/2 max-[820px]:w-full" data-aos="fade-right">
             <p class="text-5xl font-bold">{{$name}}</p>

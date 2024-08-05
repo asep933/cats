@@ -4,11 +4,11 @@
         <x-why-us />
     </div>
 
-    <div id="cat" class="px-16 w-full py-12" data-aos="fade-right">
-        <h1 class="text-5xl font-bold py-12">Cats List</h1>
+    <div id="cat" class="w-full py-12 container mx-auto" data-aos="fade-right">
+        <h1 class="text-5xl px-16 font-bold mb-4">Cats List</h1>
 
         <div 
-        class="flex w-full justify-center">
+        class="w-full">
             <x-carousel>
                 @foreach($cats as $cat)
                     <x-card 
@@ -26,7 +26,7 @@
         <x-info />
     </div>
 
-    <div class="py-12">
+    <div class="py-12 container mx-auto px-16">
         <h1 class="text-5xl font-bold mb-12 text-center" data-aos="zoom-in">Gallery</h1>
         
         <x-gallery-home>
@@ -56,7 +56,7 @@
     <div class="w-full bg-slate-100 pb-12">
         <h1 class="text-5xl font-bold py-12 text-black text-center" data-aos="zoom-in">Partners</h1>
 
-        <div class="flex w-full justify-center" data-aos="flip-up">
+        <div class="flex w-full justify-center container mx-auto" data-aos="flip-up">
             <x-carousel-partner>
                 @foreach($partners as $partner)
                     <x-card
@@ -68,7 +68,7 @@
         </div>
     </div>
 
-    <div class="pt-16">
+    <div class="pt-16 container mx-auto">
         <x-map />
     </div>
     

@@ -1,7 +1,7 @@
 @props([
     'image',
     'cat',
-    'description'
+    'description' => false
 ])
 
 <tr>

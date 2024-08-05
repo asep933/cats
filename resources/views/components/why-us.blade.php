@@ -1,4 +1,4 @@
-<div class="text-white px-16 space-y-8 pt-8 max-[820px]:px-4">
+<div class="text-white px-16 space-y-8 pt-8 max-[820px]:px-4 container mx-auto">
     <h1 class="text-5xl font-bold w-1/2 max-[820px]:text-xl max-[820px]:w-full">
         How do we ensure that our cats receive the best health care and treatment?
     </h1>

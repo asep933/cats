@@ -3,8 +3,8 @@
     <!-- head -->
     <thead class="text-white">
       <tr>
-        <th class="text-xl font-bold">Cat</th>
-        <th class="text-xl font-bold">Description</th>
+        <th class="text-xl font-bold">{{$colOne}}</th>
+        <th class="text-xl font-bold">{{$colTwo ?? false}}</th>
       </tr>
     </thead>
     <tbody>

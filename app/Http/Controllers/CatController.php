@@ -8,6 +8,7 @@ use App\Models\Partner;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 
 class CatController extends Controller
 {
@@ -60,10 +61,25 @@ class CatController extends Controller
     }
 
     public function search (Request $request): View
-    {
-        $term = $request['search'];
-        $cats = Cat::where('name', 'like', "%$term%")->get();
+        {
+            $term = $request['search'];
 
-        return view('search', compact('cats'))->with('message', "success search!");
+            $cats = DB::table('cats')
+                ->where('name', 'like', "%$term%")
+                ->orWhere('description', 'like', "%$term%")
+                ->get();
+
+            return view('search', compact('cats'))->with('message', "success search!");
+        }
+    public function searchTable (Request $request): View
+        {
+            $term = $request->search_table;
+
+            $catsTable = DB::table('cats')
+                ->where('name', 'like', "%$term%")
+                ->orWhere('description', 'like', "%$term%")
+                ->get();
+
+            return view('admin.home', compact('catsTable'))->with('message', "success search!");
+        }
     }
-}

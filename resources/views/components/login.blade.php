@@ -4,7 +4,9 @@
     <div class="w-full flex justify-center">
         <!-- <h1 class="text-3xl font-bold">Login</h1> -->
         <div class="card shrink-0 w-full max-w-sm bg-base-100">
-        <form class="card-body" action="{{route('login.post')}}">
+        <form class="card-body" method="POST" action="{{route('auth.login')}}">
+            @csrf
+            
             <h1 class="text-center text-2xl font-bold">Login</h1>
             <div class="form-control">
             <label class="label">

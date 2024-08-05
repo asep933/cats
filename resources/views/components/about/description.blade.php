@@ -1,4 +1,4 @@
-<div class="px-16 h-screen flex justify-center items-center flex-col space-y-6 
+<div class="px-16 h-screen flex justify-center container mx-auto items-center flex-col space-y-6 
 max-[820px]:h-auto max-[820px]:px-5 max-[820px]:py-12">
     <div class="w-full" data-aos="fade-right">
         <h1 class="text-5xl font-bold text-start">About Us</h1>
