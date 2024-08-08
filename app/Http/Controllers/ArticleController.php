@@ -123,7 +123,7 @@ class ArticleController extends Controller
         ->with('message', 'successfully deleted article');
     }
 
-    public function searchTable (Request $request): View
+    public function searchTable (Request $request)
     {
         $term = $request->search_table;
 

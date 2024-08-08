@@ -2,7 +2,7 @@
     <div class="container mx-auto px-16 py-8">
         <div class="grid place-items-center">
             <x-admin-menu>
-                <a href="{{route("admin.home")}}">Admin</a>
+                <a href="{{route("admin.home")}}">Cats</a>
                 <a href="{{route("list.article")}}">Article</a>
                 <a href="{{route('list.partner')}}">partners</a>
             </x-admin-menu>
@@ -24,6 +24,8 @@
                     <x-table-row
                         :image="asset('storage/partners/'.$partnerTable->image)"
                         :cat="$partnerTable->title"
+                        :actionUpdate="route('show.partner', $partnerTable->id)"
+                        :actionDelete="route('delete.partner', $partnerTable->id)"
                     />
                 @empty
                     <p class="text-white">Partner not found</p>
@@ -34,6 +36,8 @@
                     <x-table-row
                     image="{{asset('storage/partners/'.$partner->image)}}"
                     cat="{{$partner->title}}"
+                    :actionEdit="route('show.partner', $partner)"
+                    :actionDelete="route('delete.partner', $partner)"
                     />      
                 @endforeach
             @endif

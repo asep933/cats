@@ -10,15 +10,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/add-article', function() {
     return view('article.store');
-})->name('add.article');
+})->middleware('auth')->name('add.article');
 
 Route::get('/admin/list-article', function() {
     $articles = Article::latest()->paginate(10);
 
     return view('article.list-article', compact('articles'));
-})->name('list.article');
+})->middleware('auth')->name('list.article');
 
-Route::get('/admin/article-article', [ArticleController::class, 'searchTable'])->name('search.article-table');
+Route::get('/admin/article-article', [ArticleController::class, 'searchTable'])
+    ->middleware('auth')
+    ->name('search.article-table');
 
 Route::get('/about', function() {
     return view('about');
@@ -26,22 +28,25 @@ Route::get('/about', function() {
 
 Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.post');
 
-
 Route::controller(CatController::class)->group(function () {
     Route::get('/', 'index')->name('home');
-    Route::post('/cat-store', 'store')->name('cat.store');
-    Route::delete('/cat-destroy', 'destroy');
-
-    Route::get('/admin', 'admin')->name('admin.home')->middleware('auth');
+    Route::get('/cat-edit/{cat}', 'edit')->middleware('auth')->name('cat.edit');
+    Route::post('/cat-store', 'store')->middleware('auth')->name('cat.store');
+    Route::put('/cat-update/{cat}', 'update')->middleware('auth')->name('cat.update');
+    Route::delete('/delete/{cat}', 'destroy')->middleware('auth')->name('destroy.cat');
+    Route::get('/admin', 'admin')->middleware('auth')->name('admin.home');
     Route::get('/gallery', 'gallery')->name('gallery');
     Route::get('/search', 'search')->name('search.get');
     Route::get('/search-table', 'searchTable')->name('search.table');
 });
 
 Route::controller(PartnerController::class)->group(function () {
-    Route::get('/admin/list-partner', 'index')->name('list.partner');
-    Route::get('/admin/add-partner', 'add')->name('add.partner');
-    Route::post('/store-partner', 'store')->name('store.partner');
+    Route::get('/admin/list-partner', 'index')->middleware('auth')->name('list.partner');
+    Route::get('/admin/add-partner', 'add')->middleware('auth')->name('add.partner');
+    Route::post('/store-partner', 'store')->middleware('auth')->name('store.partner');
+    Route::get('/show-partner/{partner}', 'show')->middleware('auth')->name('show.partner');
+    Route::put('/update-partner/{partner}', 'update')->middleware('auth')->name('update.partner');
+    Route::delete('/delete-partner/{partner}', 'destroy')->middleware('auth')->name('delete.partner');
     Route::get('/admin/search-partner', 'searchTable')->name('search.partner-table');
 });
 

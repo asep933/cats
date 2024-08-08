@@ -8,7 +8,7 @@
         </x-admin-menu>
     </div>
 
-    <div class="space-y-8 pl-12 pb-16 container mx-auto" data-aos="fade-left">
+    <div class="space-y-8 pb-16 container mx-auto" data-aos="fade-left">
         <div class="inline-flex justify-between w-full gap-6 items-center">
             <h1 class="text-2xl font-bold">Cat List</h1>
 
@@ -21,25 +21,30 @@
         
         <x-table-cats colOne="Cats" colTwo="Description">
             @if (isset($catsTable))
-                @forelse ($catsTable as $catTable)
+                @forelse($catsTable as $catTable)
                     <x-table-row
-                        image="{{asset('storage/cats/'.$catTable->image)}}"
-                        cat="{{$catTable->name}}"
-                        description="{{$catTable->description}}"
-                    />
+                    :image="asset('storage/cats/'.$catTable->image)"
+                    :cat="$catTable->name"
+                    :description="$catTable->description"
+                    :actionEdit="route('cat.edit', $catTable->id)"
+                    :actionDelete="route('destroy.cat', $catTable->id)"
+                    />     
+                    
                 @empty
                     <p class="text-white">Cat not found</p>
-
                 @endforelse
             @else
                 @foreach($cats as $cat)
                     <x-table-row
-                    image="{{asset('storage/cats/'.$cat->image)}}"
-                    cat="{{$cat->name}}"
-                    description="{{$cat->description}}"
+                    :image="asset('storage/cats/'.$cat->image)"
+                    :cat="$cat->name"
+                    :description="$cat->description"
+                    :actionEdit="route('cat.edit', $cat)"
+                    :actionDelete="route('destroy.cat', $cat)"
                     />      
                 @endforeach
             @endif
+
         </x-table-cats>
 
         @if (isset($cats))   

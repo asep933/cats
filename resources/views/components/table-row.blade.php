@@ -1,7 +1,9 @@
 @props([
-    'image',
+    'image' => false,
     'cat',
-    'description' => false
+    'description' => false,
+    'actionEdit' => false,
+    'actionDelete' => false,
 ])
 
 <tr>
@@ -19,5 +21,18 @@
     </td>
     <td>
         <h1>{{$description}}</h1>
+    </td>
+    <td>
+        <div class="flex gap-2">
+            <form action="{{$actionEdit}}" method="GET">
+                <button type="submit" class="btn btn-xs">Edit</button>
+            </form>
+            
+            <form action="{{$actionDelete}}" method="POST">
+                @csrf
+                @method("delete")
+                <button type="submit" class="btn btn-xs">Delete</button>
+            </form>
+        </div>
     </td>
 </tr>

@@ -5,6 +5,7 @@
       <tr>
         <th class="text-xl font-bold">{{$colOne}}</th>
         <th class="text-xl font-bold">{{$colTwo ?? false}}</th>
+        <th class="text-xl font-bold">Action</th>
       </tr>
     </thead>
     <tbody>

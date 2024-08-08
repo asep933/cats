@@ -27,7 +27,7 @@ class AuthController extends Controller
         auth()->login($request['email']);
         $request->session()->regenerate();
 
-        return redirect('/')->with('message', 'successfuly register');
+        return redirect('/')->with('message', 'succesfully register');
     }
 
     public function loginPost (Request $request) {
@@ -40,7 +40,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
  
-            return redirect()->intended('admin')->with('message', 'successfuly login');
+            return redirect()->intended('admin')->with('message', 'succesfully login');
         }
  
         return back()->withErrors([
@@ -54,6 +54,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerate();
 
-        return redirect('/')->with('message', 'successfuly logout');
+        return redirect('/')->with('message', 'succesfully logout');
     }
 }
